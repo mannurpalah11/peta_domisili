@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>Rumah saya</title>
+	
+	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+	<style>
+		html, body {
+			height: 100%;
+			margin: 0;
+		}
+		.leaflet-container {
+			height: 1000px;
+			width: 1000px;
+			max-width: 100%;
+			max-height: 100%;
+			
+		}
+		header {
+  background-color: rgb(123, 133, 167);
+  padding: 10px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+nav {
+  float: left;
+  width: 15%;
+  height: 420px; /* only for demonstration, should be removed */
+  background: #ccc;
+  padding: 20px;
+}
+article {
+  float: left;
+  padding: 20px;
+  width: 1065px;
+  background-color: #f1f1f1;
+  height: 420px; /* only for demonstration, should be removed */
+}
+
+	</style>
+
+	
+</head>
+<body>
+	<header>
+	
+		<h2 style="font-family:Cursive;">Map of frequently visited places</h2>
+	  </header>
+	  <section>
+		<nav>
+		<img src="./ikon/utara.png" width="180" height="150">
+		<h3>Iman Nurpalah</h3>
+		<h4>20/464422/SV/18741</h4>
+		<h5>Garis merah = area jangkauan terjauh dari rumah ke objek</h5>
+		</nav>
+		
+		<article>
+		  
+			<div id="map" style="width: 1065px; height: 420px; ;"></div>
+	  
+		</article>
+		  
+	  </section>
+
+<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+<script>
+	var map = L.map('map').setView([-7.185599, 108.377302], 15);
+
+	var tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		maxZoom: 50,
+		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+	}).addTo(map);
+	var firefoxIcon = L.icon({
+        iconUrl: "./ikon/home.svg",
+        iconSize: [25, 40], // size of the icon
+        });
+
+    L.marker([-7.186262, 108.382081], {icon: firefoxIcon}).bindPopup('Rumah Saya nich').addTo(map);
+
+	
+
+L.tileLayer.wms("https://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi", {
+    	layers: 'nexrad-n0r-900913',
+        format: 'image/png',
+        transparent: true,
+        attribution: "Iman Nurpalah SIG WEB"
+    }).addTo(map);
+
+	var firefoxIcon = L.icon({
+        iconUrl: "./ikon/masjid.svg",
+        iconSize: [25, 40], // size of the icon
+        });
+
+    L.marker([-7.1886854777490985, 108.38497209390385], {icon: firefoxIcon}).bindPopup('Masjid Al-Ittihad').addTo(map);
+
+	var firefoxIcon = L.icon({
+        iconUrl: "./ikon/grocery.svg",
+        iconSize: [25, 40], // size of the icon
+        });
+
+    L.marker([-7.189164559078984, 108.3727967246128], {icon: firefoxIcon}).bindPopup('Toko Setia').addTo(map);
+
+	var firefoxIcon = L.icon({
+        iconUrl: "./ikon/alun.svg",
+        iconSize: [25, 40], // size of the icon
+        });
+
+    L.marker([-7.185454723812161, 108.36926623157716], {icon: firefoxIcon}).bindPopup('Alun-Alun').addTo(map);
+
+	var firefoxIcon = L.icon({
+        iconUrl: "./ikon/bank.svg",
+        iconSize: [25, 40], // size of the icon
+        });
+
+    L.marker([-7.185796555822225, 108.36866053923862], {icon: firefoxIcon}).bindPopup('Bank BNI').addTo(map);
+	var firefoxIcon = L.icon({
+        iconUrl: "./ikon/sma.svg",
+        iconSize: [25, 40], // size of the icon
+        });
+
+    L.marker([-7.186527812454952, 108.36430459640522], {icon: firefoxIcon}).bindPopup('SMAN 1 Kawali').addTo(map);
+	var firefoxIcon = L.icon({
+        iconUrl: "./ikon/soccer.svg",
+        iconSize: [25, 40], // size of the icon
+        });
+
+    L.marker([-7.183960753866211, 108.37619209909528], {icon: firefoxIcon}).bindPopup('Lapangan Sepakbola').addTo(map);
+	var firefoxIcon = L.icon({
+        iconUrl: "./ikon/bus.svg",
+        iconSize: [25, 40], // size of the icon
+        });
+
+    L.marker([-7.187083390876409, 108.37283373176909], {icon: firefoxIcon}).bindPopup('Terminal').addTo(map);
+	var firefoxIcon = L.icon({
+        iconUrl: "./ikon/pasar.svg",
+        iconSize: [25, 40], // size of the icon
+        });
+
+    L.marker([-7.190535197362668, 108.37116680777116], {icon: firefoxIcon}).bindPopup('Pasar Kawali').addTo(map);
+	var firefoxIcon = L.icon({
+        iconUrl: "./ikon/bakso.svg",
+        iconSize: [25, 40], // size of the icon
+        });
+
+    L.marker([-7.192014774600287, 108.36783013964022], {icon: firefoxIcon}).bindPopup('Warung Bakso').addTo(map);
+	var firefoxIcon = L.icon({
+        iconUrl: "./ikon/cafe.svg",
+        iconSize: [25, 40], // size of the icon
+        });
+
+    L.marker([-7.190077485469356, 108.36415014908415], {icon: firefoxIcon}).bindPopup('Kopi Sore').addTo(map);
+
+	L.Routing.control({
+  waypoints: [
+    L.latLng(-7.186262, 108.382081),
+    L.latLng(-7.190077485469356, 108.36415014908415)
+  ]
+}).addTo(map);
+
+
+
+</script>
+
+
+
+</body>
+</html>
